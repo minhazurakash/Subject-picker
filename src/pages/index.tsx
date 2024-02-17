@@ -9,11 +9,11 @@ export default function Home() {
   const [selectedSubject, setSelectedSubject] = useState<string>(null);
   const [selectedCodes, setSelectedCodes] = useState<string[]>([]);
   const subjectList = [
-    { name: "Programming Language I", code: "CSE161.34" },
-    { name: "Differential & Integral Calculus", code: "MAT141.23" },
     { name: "Advanced English Skills", code: "ENG103.49" },
-    { name: "Engineering Ethics", code: "SOC341.10" },
+    { name: "Differential & Integral Calculus", code: "MAT141.23" },
+    { name: "Programming Language I", code: "CSE161.34" },
     { name: "Programming Language I Lab", code: "CSE162.40" },
+    { name: "Engineering Ethics", code: "SOC341.10" },
   ];
   return (
     <main className={`container mx-auto p-10 ${inter.className}`}>
