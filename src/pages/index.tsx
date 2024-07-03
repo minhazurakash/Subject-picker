@@ -10,7 +10,7 @@ export default function Home() {
   const [selectedCodes, setSelectedCodes] = useState<string[]>([]);
   const subjectList = [
     { name: "Java Language", code: "CSE281.7" },
-    { name: "Discreate Math", code: "CSE181.20" },
+    { name: "Discreate Math", code: "CSE181.23" },
     { name: "Java Language Lab", code: "CSE282.7" },
     { name: "Management Info", code: "CSE475.3" },
   ];
