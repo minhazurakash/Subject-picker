@@ -9,10 +9,13 @@ export default function Home() {
   const [selectedSubject, setSelectedSubject] = useState<string>(null);
   const [selectedCodes, setSelectedCodes] = useState<string[]>([]);
   const subjectList = [
-    { name: "Java Language", code: "CSE281.7" },
-    { name: "Discreate Math", code: "CSE181.23" },
-    { name: "Java Language Lab", code: "CSE282.7" },
-    { name: "Management Info", code: "CSE475.3" },
+    { name: "Digital Logic Design", code: "CSE263.13" },
+    { name: "Digital Logic Design Lab", code: "CSE264.12" },
+    { name: "Statistical Methods", code: "STA281.9" },
+    { name: "Electrical Circuits Design", code: "EEE181.11" },
+    { name: "Electrical Circuits Design Lab", code: "EEE182.13" },
+    { name: "Data Structures", code: "CSE241.21" },
+    { name: "Data Structures Lab", code: "CSE242.25" },
   ];
   return (
     <main className={`container mx-auto p-10 ${inter.className}`}>
@@ -53,7 +56,7 @@ export default function Home() {
           );
         })}
 
-        <div className="mt-20">
+        {/* <div className="mt-20">
           <h2 className="text-lg text-center mb-5">
             Backup for Programming Language 2
           </h2>
@@ -79,7 +82,7 @@ export default function Home() {
               Java Language
             </button>
           </CopyToClipboard>
-        </div>
+        </div> */}
       </div>
       <Toaster />
     </main>
