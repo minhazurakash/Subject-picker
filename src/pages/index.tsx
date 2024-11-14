@@ -19,7 +19,7 @@ export default function Home() {
   ];
   return (
     <main className={`container mx-auto p-10 ${inter.className}`}>
-      <div className="text-center my-16">
+      <div className="text-center my-8">
         <h1 className="text-3xl md:text-4xl font-medium mb-2 text-green-500">
           Subject List
         </h1>
@@ -28,7 +28,7 @@ export default function Home() {
           <span className="text-blue-600"> to copy subject code</span>
         </p>
       </div>
-      <div className="flex flex-col items-center gap-5">
+      <div className="flex flex-col items-center gap-2">
         {subjectList.map((item) => {
           return (
             <CopyToClipboard
