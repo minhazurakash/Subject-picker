@@ -18,8 +18,8 @@ export default function Home() {
     { name: "Data Structures Lab", code: "CSE242.25" },
   ];
   return (
-    <main className={`container mx-auto p-10 ${inter.className}`}>
-      <div className="text-center my-8">
+    <main className={`container mx-auto p-4 ${inter.className}`}>
+      <div className="text-center my-5">
         <h1 className="text-3xl md:text-4xl font-medium mb-2 text-green-500">
           Subject List
         </h1>
