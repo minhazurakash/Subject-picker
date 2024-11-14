@@ -10,7 +10,7 @@ export default function Home() {
   const [selectedCodes, setSelectedCodes] = useState<string[]>([]);
   const subjectList = [
     { name: "Digital Logic Design", code: "CSE263.13" },
-    { name: "Digital Logic Design Lab", code: "CSE264.12" },
+    { name: "Digital Logic Design Lab", code: "CSE264.13" },
     { name: "Statistical Methods", code: "STA281.9" },
     { name: "Electrical Circuits Design", code: "EEE181.11" },
     { name: "Electrical Circuits Design Lab", code: "EEE182.13" },
