@@ -1,24 +1,23 @@
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast, { Toaster } from "react-hot-toast";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [selectedSubject, setSelectedSubject] = useState<string>(null);
   const [selectedCodes, setSelectedCodes] = useState<string[]>([]);
   const subjectList = [
-    { name: "Digital Logic Design", code: "CSE263.13" },
-    { name: "Digital Logic Design Lab", code: "CSE264.13" },
-    { name: "Statistical Methods", code: "STA281.9" },
-    { name: "Electrical Circuits Design", code: "EEE181.11" },
-    { name: "Electrical Circuits Design Lab", code: "EEE182.13" },
-    { name: "Data Structures", code: "CSE241.21" },
-    { name: "Data Structures Lab", code: "CSE242.25" },
+    { name: "Complex Variables", code: "MAT241.15" },
+    { name: "Algorithm", code: "CSE265.15" },
+    { name: "Theory of Computing", code: "CSE441.4" },
+    { name: "Algorithm Lab", code: "CSE266.14" },
+    { name: "Physics II", code: "PHY181.15" },
+    { name: "Physics II Lab", code: "PHY182.23" },
   ];
   return (
-    <main className={`container mx-auto p-4 ${inter.className}`}>
+    <main className={`container mx-auto p-4`}>
       <div className="text-center my-5">
         <h1 className="text-3xl md:text-4xl font-medium mb-2 text-green-500">
           Subject List
