@@ -217,7 +217,7 @@ export default function Home() {
           <div className="flex flex-wrap items-center justify-center gap-2">
             {/* Layout: compact select on small screens */}
             {/* Radio group for column view */}
-            <div className="flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-2">
               {/* Mobile: simple select */}
               <label
                 htmlFor="colsSelect"
