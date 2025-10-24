@@ -6,12 +6,12 @@ type Subject = { name: string; code: string };
 const STORAGE_KEY = "subjectList_v1";
 
 const DEFAULT_SUBJECTS: Subject[] = [
-  { name: "Complex Variables", code: "MAT241.15" },
-  { name: "Algorithm", code: "CSE265.15" },
-  { name: "Theory of Computing", code: "CSE441.4" },
-  { name: "Algorithm Lab", code: "CSE266.14" },
-  { name: "Physics II", code: "PHY181.15" },
-  { name: "Physics II Lab", code: "PHY182.23" },
+  { name: "Communication Lab", code: "ETE282.12" },
+  { name: "Communication Theory", code: "ETE281.9" },
+  { name: "Computer Architecture", code: "CSE343.15" },
+  { name: "Linear Algebra", code: "MAT261.13" },
+  { name: "Microprocessor Design", code: "CSE363.10" },
+  { name: "Microprocessor Design Lab", code: "CSE364.10" },
 ];
 
 export default function Home() {
@@ -38,7 +38,7 @@ export default function Home() {
             code: String((it as any)?.code ?? "").trim(),
           }))
           .filter((it) => it?.name && it?.code);
-        setSubjectList(arr?.length ? arr : DEFAULT_SUBJECTS);
+        setSubjectList(arr?.length ? arr : []);
       }
     } catch {
       // ignore parse/storage errors
@@ -182,8 +182,8 @@ export default function Home() {
 
   return (
     <main
-      className={`max-w-3xl mx-auto p-4 sm:p-6 ${
-        cols === 3 ? "max-w-4xl" : ""
+      className={`max-w-4xl mx-auto p-4 sm:p-6 ${
+        cols === 3 ? "max-w-7xl" : ""
       }`}
     >
       <header className="mb-6">
@@ -196,22 +196,42 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div className="mt-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between ">
           {/* Stats */}
-          <div className="flex items-center gap-2 justify-center md:justify-start">
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs bg-gray-100 text-gray-700 border border-gray-200">
-              {subjectList?.length ?? 0} subjects
-            </span>
-            <span
-              className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs border ${
-                (selectedCodes?.length ?? 0) > 0
-                  ? "bg-green-50 text-green-700 border-green-200"
-                  : "bg-gray-50 text-gray-500 border-gray-200"
-              }`}
-            >
-              {selectedCodes?.length ?? 0} selected
-            </span>
-          </div>
+          {subjectList?.length > selectedCodes?.length ? (
+            <div className="flex items-center gap-2 justify-center md:justify-start">
+              <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs bg-gray-100 text-gray-700 border border-gray-200">
+                {subjectList?.length ?? 0} subjects
+              </span>
+              <span
+                className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs border ${
+                  (selectedCodes?.length ?? 0) > 0
+                    ? "bg-green-50 text-green-700 border-green-200"
+                    : "bg-gray-50 text-gray-500 border-gray-200"
+                }`}
+              >
+                {selectedCodes?.length ?? 0} Copied
+              </span>
+            </div>
+          ) : (
+            <>
+              {subjectList?.length > 0 ? (
+                <div className="flex items-center gap-2 justify-center md:justify-start">
+                  <div className="animate-bounce"></div>
+                  <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-green-100 text-green-800 border border-green-200">
+                    🎉 Congratulations! Course Advising Complete!
+                  </span>
+                </div>
+              ) : (
+                <div className="flex items-center gap-2 justify-center md:justify-start">
+                  <div className="animate-bounce"></div>
+                  <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 border border-yellow-200">
+                    No subjects found.
+                  </span>
+                </div>
+              )}
+            </>
+          )}
 
           {/* Controls */}
           <div className="flex flex-wrap items-center justify-center gap-2">
@@ -355,12 +375,12 @@ export default function Home() {
                   Add a single subject that will appear in the picker.
                 </p>
               </div>
-              <div className="text-right text-xs text-gray-500">
+              {/* <div className="text-right text-xs text-gray-500">
                 <div>{subjectList?.length} subjects</div>
                 <div className="mt-1">
                   Copied / Selected: {selectedCodes?.length}
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <form
@@ -426,7 +446,7 @@ export default function Home() {
                 type="button"
                 onClick={() => {
                   setJsonInput(
-                    `[{"name":"Linear Algebra","code":"MAT201.1"},{"name":"Data Structures","code":"CSE210.2"}]`
+                    `[{ "name": "Communication Lab", "code": "ETE282.12" },{ "name": "Communication Theory", "code": "ETE281.9" },{ "name": "Computer Architecture", "code": "CSE343.15" },{ "name": "Linear Algebra", "code": "MAT261.13" },{ "name": "Microprocessor Design", "code": "CSE363.10" },{ "name": "Microprocessor Design Lab", "code": "CSE364.10" }]`
                   );
                 }}
                 className="px-3 py-2 rounded-md bg-blue-50 text-sm text-blue-700 border border-blue-100"
@@ -566,6 +586,7 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-col md:flex-row items-center gap-2">
+                      {/* 
                       <button
                         type="button"
                         onClick={() => {
@@ -582,8 +603,7 @@ export default function Home() {
                         aria-label={`Select ${s?.name}`}
                       >
                         Select
-                      </button>
-
+                      </button> */}
                       <button
                         type="button"
                         onClick={() => {
@@ -621,13 +641,13 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => {
-                  setSubjectList([...DEFAULT_SUBJECTS]);
+                  setSubjectList([]);
                   setSelectedCodes([]);
                   toast.success("Reset to defaults.");
                 }}
-                className="px-4 py-2 rounded-md bg-yellow-500 text-white text-sm font-medium"
+                className="px-4 py-2 rounded-md bg-red-500 text-white text-sm font-medium"
               >
-                Reset defaults
+                Reset Course
               </button>
             </div>
           </div>
@@ -713,6 +733,77 @@ export default function Home() {
                 );
               })}
             </section>
+
+            {(subjectList?.length ?? 0) === 0 && (
+              <div className="mt-6 flex items-center justify-center">
+                <div className="w-full max-w-2xl text-center rounded-lg border border-gray-100 bg-white/80 p-6 shadow-sm">
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-green-50 to-emerald-50">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-8 w-8 text-emerald-600"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                      aria-hidden
+                    >
+                      <path
+                        d="M12 2v6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M6 12h12"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M4 20h16"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <h3 className="mt-4 text-lg font-semibold text-gray-800">
+                    No subjects yet
+                  </h3>
+                  <p className="mt-2 text-sm text-gray-500">
+                    Your subject list is empty — add subjects to quickly copy
+                    course codes.
+                  </p>
+
+                  <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setIsEditing(true)}
+                      className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-green-600 text-white text-sm font-medium shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300"
+                      aria-label="Add subjects"
+                    >
+                      Add subjects
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSubjectList(DEFAULT_SUBJECTS);
+                        setSelectedCodes([]);
+                        toast.success("Restored default subjects.");
+                      }}
+                      className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-white text-sm font-medium border border-gray-200 text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-green-200"
+                      aria-label="Restore default subjects"
+                    >
+                      Restore defaults
+                    </button>
+                  </div>
+
+                  <div className="mt-4 text-xs text-gray-400">
+                    Tip: Tap Add subjects to open the editor where you can add a
+                    single subject or import a JSON array.
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div className="mt-6 flex justify-center">
               <a
